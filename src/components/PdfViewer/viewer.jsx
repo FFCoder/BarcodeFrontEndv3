@@ -1,24 +1,42 @@
 import React, { Component } from 'react';
 
 class PdfFiles extends Component {
-    state = {  }
+    state = { 
+        currentuser: null,
+        isLoading: false,
+     }
     render() { 
-        return ( 
-        <React.Fragment>
-            <p>
-                Test Viewer
-                
-                {this.props.firebase.getCurrentUser()}
-            </p>
-        </React.Fragment> );
+        const { currentuser, isLoading } = this.state;
+
+        if (isLoading) {
+            return <p>Loading...</p>
+        }
+        else {
+        return (
+            <div>
+                Loaded {currentuser}
+            </div>
+        )
+        }
+
     }
     componentDidMount() {
-        console.log('Firebase: ', this.props.firebase)
-        console.log('Current User: ', this.props.firebase.getCurrentUser());
-        console.log('Test: ', this.props.firebase.auth.currentuser);
-        setInterval(() => {
-            console.log(this.props.firebase.currentuser);
-        }, 1000)
+        this.setState({isLoading: true});
+        this.props.firebase.auth.onAuthStateChanged((user) => {
+            if (user) {
+                this.setState(
+                    {
+                        currentuser: user.displayName,
+                        isLoading: false,
+                    }
+                )
+                console.log('User: ', user);
+            }
+            else {
+                console.log('No User')
+            }
+        })
+        
     }
 }
  
