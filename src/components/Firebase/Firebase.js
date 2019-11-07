@@ -1,4 +1,6 @@
 import app from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDeouzWBsN-eiv4r2VxXIrke1DERCbh7VU",
@@ -13,6 +15,31 @@ const firebaseConfig = {
   class Firebase {
       constructor() {
           app.initializeApp(firebaseConfig);
+          this.db = app.firestore();
+          this.auth = app.auth();
+      }
+      signInWithGoogle() {
+          let provider = new app.auth.GoogleAuthProvider();
+          this.auth.signInWithPopup(provider)
+            .then((result) => {
+                //let token = result.credential.accessToken;
+                let user = result.user;
+                return user;
+
+            })
+            .catch(error => {
+                let errorCode = error.code;
+                let errorMsg = error.message;
+
+                let email = error.email;
+                //let creds = error.credential;
+
+                console.error(`Error when Authenticating ${email} | Error Code ${errorCode}: ${errorMsg}`);
+            })
+          
+      }
+      signOut() {
+          this.auth.signOut();
       }
   }
   export default Firebase;
