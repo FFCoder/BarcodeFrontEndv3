@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
-
-import Header from '../components/Header/index';
+import Layout from '../views/Layout';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            schools: []
+        }
+    }
     render() {
         return (
             <div>
-            <Header />
-                <p>Testing</p>
+            <Layout>
+            </Layout>
             </div>
         )
     }

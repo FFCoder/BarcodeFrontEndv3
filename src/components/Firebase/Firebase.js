@@ -24,6 +24,7 @@ const firebaseConfig = {
             .then((result) => {
                 //let token = result.credential.accessToken;
                 let user = result.user;
+                console.log('Signed In: ', user.displayName);
                 return user;
 
             })
@@ -40,6 +41,9 @@ const firebaseConfig = {
       }
       signOut() {
           this.auth.signOut();
+      }
+      getCurrentUser() {
+          return this.auth.currentUser;
       }
   }
   export default Firebase;

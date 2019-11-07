@@ -8,7 +8,6 @@ import Home from './Home';
 
 class App extends Component {
     state = { 
-        count: 100
      }
     render() { 
         return (
@@ -18,7 +17,7 @@ class App extends Component {
                 <Home />
             </Route>
         </Switch>
-        </Router> 
+        </Router>
         );
     }
 }
