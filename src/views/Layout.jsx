@@ -7,7 +7,10 @@ class Layout extends Component {
         return ( 
             <div>
                 <Header />
+                <div className="container">
                 { this.props.children }
+                </div>
+                
             </div>
          );
     }

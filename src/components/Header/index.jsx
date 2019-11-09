@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link }  from 'react-router-dom';
-import GoogleSignIn from '../gSignIn/index';
 import { FirebaseContext } from '../Firebase';
+import Greeter from '../Greeter/greeter';
 
 class Header extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Header extends Component {
                 <Link to='/' className="navbar-brand">Barcode App</Link>
                 <FirebaseContext.Consumer>
                     {firebase => {
-                        return <GoogleSignIn firebase={firebase}/>
+                        return <Greeter firebase={firebase}/>
                     }}
                 </FirebaseContext.Consumer>
                 

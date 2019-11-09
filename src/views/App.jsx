@@ -5,6 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 import Home from './Home';
+import PdfBrowser from './Pdfs/pdfs';
 
 class App extends Component {
     state = { 
@@ -15,6 +16,9 @@ class App extends Component {
         <Switch>
             <Route path="/">
                 <Home />
+            </Route>
+            <Route path='/pdfs'>
+                <PdfBrowser />
             </Route>
         </Switch>
         </Router>
