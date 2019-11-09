@@ -7,7 +7,7 @@ class Layout extends Component {
         return ( 
             <div>
                 <Header />
-                <div className="container">
+                <div className="container-fluid">
                 { this.props.children }
                 </div>
                 

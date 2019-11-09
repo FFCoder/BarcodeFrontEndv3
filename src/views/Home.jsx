@@ -3,13 +3,12 @@ import Layout from '../views/Layout';
 import './home.css'
 import { FirebaseContext } from '../components/Firebase';
 import Button from '../components/Button';
-
+import { Link }  from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schools: [],
             btnEnabled: false,
         }
     }
@@ -17,17 +16,18 @@ export default class Home extends Component {
         console.log('btnEnabled', this.state.btnEnabled)
         if (this.state.btnEnabled) {
             return (
-                <Layout>
-                    <React.Fragment>
-                        <div className="row">
-                            <Button color="primary" data="PDFs" link="/pdfs" />
-                            <Button color="info" data="Upload CSV" />
-                        </div>
-                        <div className="row">
-                            <Button color="warning" data="Help" />
-                            <Button color="danger" data="Sign Out" />
-                        </div>
-                    </React.Fragment></Layout>)
+                <React.Fragment>
+                <Link to='/pdfs'>TEST LINK</Link>
+                    <div className="row">
+                        <Button color="primary" data="PDFs" link="/pdfs" />
+                        <Button color="info" data="Upload CSV" />
+                    </div>
+                    <div className="row">
+                        <Button color="warning" data="Help" />
+                        <Button color="danger" data="Sign Out" />
+                    </div>
+                </React.Fragment>
+                )
         }
         else {
             return (

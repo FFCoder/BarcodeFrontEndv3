@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDeouzWBsN-eiv4r2VxXIrke1DERCbh7VU",
@@ -17,6 +18,7 @@ const firebaseConfig = {
           app.initializeApp(firebaseConfig);
           this.db = app.firestore();
           this.auth = app.auth();
+          this.storage = app.storage();
       }
       signInWithGoogle() {
           let provider = new app.auth.GoogleAuthProvider();
@@ -44,6 +46,11 @@ const firebaseConfig = {
       }
       getCurrentUser() {
           return this.auth.currentUser;
+      }
+      getFileDownloadUrl(filePath) {
+          const storageRef = this.storage.ref();
+          const fileRef = storageRef.child(filePath);
+          return fileRef.getDownloadURL();
       }
   }
   export default Firebase;

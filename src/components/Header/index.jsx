@@ -15,7 +15,7 @@ class Header extends Component {
                 <Link to='/' className="navbar-brand">Barcode App</Link>
                 <FirebaseContext.Consumer>
                     {firebase => {
-                        return <Greeter firebase={firebase}/>
+                        return <Greeter firebase={firebase} className="mr-1"/>
                     }}
                 </FirebaseContext.Consumer>
                 
