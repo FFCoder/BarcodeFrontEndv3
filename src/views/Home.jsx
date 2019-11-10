@@ -20,8 +20,9 @@ export default class Home extends Component {
                         <Button color="info" data="Upload CSV" link="/upload" />
                     </div>
                     <div className="row">
-                        <Button color="warning" data="Help" />
-                        <Button color="danger" data="Sign Out" onClick={this.signOut}/>
+                        <Button color="warning" data="Help" link="/help"/>
+                        <Button color="danger" data="Sign Out" onClick={() => {this.signOut()}} />
+                        
                     </div>
                 </div>
                 )

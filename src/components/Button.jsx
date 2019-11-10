@@ -7,7 +7,7 @@ class Button extends Component {
         this.state = {  }
     }
     render() { 
-    return ( <Link to={this.props.link} role="button" className={"btn btn-"+this.props.color+" btn-lg box"}>{this.props.data}</Link> );
+    return ( <Link to={this.props.link} role="button" onClick={this.props.onClick} className={"btn btn-"+this.props.color+" btn-lg box"}>{this.props.data}</Link> );
     }
 }
  
