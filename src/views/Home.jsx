@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import Layout from '../views/Layout';
 import './home.css'
 import { FirebaseContext } from '../components/Firebase';
 import Button from '../components/Button';
-import { Link }  from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
@@ -16,24 +14,21 @@ export default class Home extends Component {
         console.log('btnEnabled', this.state.btnEnabled)
         if (this.state.btnEnabled) {
             return (
-                <React.Fragment>
-                <Link to='/pdfs'>TEST LINK</Link>
+                <div className="box-holder">
                     <div className="row">
                         <Button color="primary" data="PDFs" link="/pdfs" />
-                        <Button color="info" data="Upload CSV" />
+                        <Button color="info" data="Upload CSV" link="/upload" />
                     </div>
                     <div className="row">
                         <Button color="warning" data="Help" />
-                        <Button color="danger" data="Sign Out" />
+                        <Button color="danger" data="Sign Out" onClick={this.signOut}/>
                     </div>
-                </React.Fragment>
+                </div>
                 )
         }
         else {
             return (
-                <Layout>
-                    <p>Please sign in.</p>
-                </Layout>
+                <p>Please sign in.</p>
             )
         }
     }
@@ -47,6 +42,9 @@ export default class Home extends Component {
                 this.setState({ btnEnabled: false });
             }
         })
+    }
+    signOut() {
+        this.context.signOut();
     }
 
 }

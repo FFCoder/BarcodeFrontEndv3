@@ -1,0 +1,10 @@
+#root {
+    min-height: 100vh;
+    background: #170736;
+}
+.container-fluid {
+    padding: 2%;
+    background: white;
+    max-width: 80vw;
+    
+}

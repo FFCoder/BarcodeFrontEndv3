@@ -12,7 +12,6 @@ class Greeter extends Component {
         const firebase = this.props.firebase;
         const currentuser = this.state.currentuser;
         if (currentuser) {
-            console.log('user',currentuser);
             return <div onClick={this.signOut}>Hello {currentuser.displayName} ({currentuser.email})</div>
        
         }
